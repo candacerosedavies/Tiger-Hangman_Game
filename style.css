@@ -67,7 +67,7 @@ body {
     padding: 4rem 2rem;
     border-radius: 10px;
 
-    animation: pulsate s infinite alternate;
+    animation: pulsates infinite alternate;
     border: 0.2rem solid #fff;
     border-radius: 2rem;
     /* padding: 0.4em; */
@@ -104,6 +104,7 @@ body {
                 0 0 80px #ff0286;
         }
     }
+
 }
 
 .hangman-box img {
@@ -120,10 +121,10 @@ body {
 /* mobile/responsive Gameboard + Playbox container styles  styles 
     only need to ammend these styles to make the whole game responsive. */
 
-@media (max-width: 650px) {
+@media (max-width: 700px) {
     .container {
         flex-direction: column;
-        padding: 30px 15px;
+        padding: 30px 10px;
         align-items: center;
 
     }
@@ -152,13 +153,22 @@ body {
 .word-display .letter {
     width: 28px;
     margin-bottom: 40px;
-    border-bottom: 3px solid #000;
+    border-bottom: 3px solid white;
 
     /* center, uppercase and style guessed letters */
     font-size: 2rem;
     font: 600;
     text-transform: uppercase;
     text-align: center;
+
+    box-shadow:
+        0 0 1rem #fff,
+        0 0 1.5rem #fff,
+        0 0 4rem #ff0286,
+        0 0 0.8rem #ff0286,
+        0 0 2.8rem #ff0286,
+        inset 0 0 1.3rem #ff0286;
+
 }
 
 /* style guess word spaces */
@@ -189,8 +199,6 @@ body {
 
 }
 
-
-
 /* num guesses 0/6 also within a <b> tag */
 .game-box .guesses-text b {
     color: white;
@@ -199,7 +207,7 @@ body {
 /* game-box keyboard to input guesses */
 .game-box .keyboard {
     display: flex;
-    gap: 5px;
+    gap: 15px;
     margin-top: 40px;
     max-width: 100%;
     align-self: center;
@@ -315,6 +323,10 @@ body {
     margin-bottom: 20px;
 } */
 
+.hangman-box svg {
+    max-width: 200px;
+    max-height: 200px;
+}
 
 /* 'game over' text */
 .game-modal h2 {

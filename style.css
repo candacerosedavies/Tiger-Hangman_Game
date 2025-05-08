@@ -120,7 +120,7 @@ body {
 /* mobile/responsive Gameboard + Playbox container styles  styles 
     only need to ammend these styles to make the whole game responsive. */
 
-@media (max-width: 782px) {
+@media (max-width: 650px) {
     .container {
         flex-direction: column;
         padding: 30px 15px;

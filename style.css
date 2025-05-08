@@ -1,32 +1,109 @@
 @import url('https://fonts.googleapis.com/css2?family=Jersey+15&family=Pixelify+Sans:wght@400..700&family=Sixtyfour+Convergence:SCAN@-53..100&family=Victor+Mono:ital,wght@0,100..700;1,100..700&display=swap');
 
+/* global neon styles */
+h1,
+h2,
+p,
+b,
+span {
+    color: #fff;
+    text-shadow:
+        0 0 10px #FF0286,
+        0 0 20px #FF0286,
+        0 0 40px #FF0286,
+        0 0 20px #fff,
+        0 0 50px #fffe,
+        0 0 50px #fff,
+        0 0 80px #fff,
+        0 0 100px #fff;
+}
+
+/* global neon styles */
+button {
+    font-size: 6.2rem;
+    /* animation: pulsate 1.5s infinite alternate; */
+    border: 0.1rem solid #fff;
+    /* border-radius: 2rem; */
+    padding: 0.4em;
+    box-shadow:
+        0 0 .4rem #fff,
+        0 0 .4rem #fff,
+        0 0 1rem #FF0286,
+        0 0 0.8rem #FF0286,
+        0 0 1.8rem #FF0286,
+        inset 0 0 1rem #FF0286;
+}
+
+
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Victor Mono", monospace;
+    color: white;
 }
 
 body {
     display: flex;
     align-items: center;
-    padding: 0 10px;
+    padding: 0 4rem;
     justify-content: center;
     min-height: 100vh;
-    background: #ff0286;
+    background: black;
+
 }
 
 /* Gameboard + playbox styles */
 
 .container {
     width: 850px;
-    background: #fff;
+    background: black;
+    /* border: 10px #ff0286;
+    border-style: dashed; */
     display: flex;
     gap: 4rem;
     align-items: flex-end;
     padding: 3rem 2rem;
     border-radius: 10px;
+
+    animation: pulsate s infinite alternate;
+    border: 0.2rem solid #fff;
+    border-radius: 2rem;
+    /* padding: 0.4em; */
+    box-shadow:
+        0 0 1rem #fff,
+        0 0 1rem #fff,
+        0 0 2rem #ff0286,
+        0 0 0.8rem #ff0286,
+        0 0 2.8rem #ff0286,
+        inset 0 0 1.3rem #ff0286;
+
+    @keyframes pulsate {
+        100% {
+            text-shadow:
+                0 0 4px #fff,
+                0 0 11px #fff,
+                0 0 19px #fff,
+                0 0 40px #ff0286,
+                0 0 80px #ff0286,
+                0 0 90px #ff0286,
+                0 0 100px #ff0286,
+                0 0 150px #ff0286;
+        }
+
+        0% {
+            text-shadow:
+                0 0 2px #fff,
+                0 0 4px #fff,
+                0 0 6px #fff,
+                0 0 10px #ff0286,
+                0 0 45px #ff0286,
+                0 0 55px #ff0286,
+                0 0 70px #ff0286,
+                0 0 80px #ff0286;
+        }
+    }
 }
 
 .hangman-box img {
@@ -112,7 +189,7 @@ body {
 
 /* num guesses 0/6 also within a <b> tag */
 .game-box .guesses-text b {
-    color: #ff5c00;
+    color: white;
 }
 
 /* game-box keyboard to input guesses */
@@ -144,11 +221,11 @@ body {
 /* style individual keyboard buttons AND 
     the 'play again' button nested inside game-modal!*/
 :where(.game-modal, .keyboard) button {
-    color: #f8f8f8;
+    color: white;
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
-    background: rgb(219, 123, 196);
+    background: #3304e4;
     border-radius: 4px;
     text-transform: uppercase;
 
@@ -171,7 +248,8 @@ body {
     the 'play again' button nested inside game-modal!*/
 :where(.game-modal, .keyboard) button:hover {
     /* paler version of same color */
-    background: rgb(209, 162, 198);
+    background: #f456a8;
+    color: #3304e4;
 }
 
 /* ---win/lose gif and message container ----*/
@@ -182,7 +260,7 @@ body {
     top: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.7);
     justify-content: center;
     align-items: center;
     padding: 0 10px;
@@ -192,6 +270,8 @@ body {
     opacity: 0;
     z-index: 999;
     transition: opacity 0.4s;
+
+
 }
 
 .game-modal.show {
@@ -203,7 +283,8 @@ body {
 /* This styles a white box that the gif, h4 etc sit inside
     nesting: game-modal/content */
 .game-modal .content {
-    background: white;
+    background: #3304e4;
+
     max-width: 420px;
     width: 100%;
     text-align: center;
@@ -213,6 +294,14 @@ body {
     display: flex;
     flex-direction: column;
 
+    box-shadow:
+        0 0 .4rem #fff,
+        0 0 .4rem #fff,
+        0 0 1rem #FF5C00,
+        0 0 0.8rem #FF5C00,
+        0 0 1.8rem #FF5C00,
+        inset 0 0 1rem #FF5C00;
+
 }
 
 /* .game-modal img {
@@ -220,15 +309,11 @@ body {
     margin-bottom: 20px;
 } */
 
-.tiger-animation {
-    /* max-width: 150px; */
-
-
-}
 
 /* 'game over' text */
 .game-modal h2 {
     font-size: 1.53rem;
+    color: white;
 }
 
 /* 'the correct word was:'' text */
@@ -236,17 +321,35 @@ body {
     font-size: 1.15rem;
     margin: 15px 0 30px;
     font-weight: 500;
+    color: white;
 }
 
 /* style the answer to the correct word (will be dynamic) */
 .game-modal p b {
-    color: rgb(219, 123, 196);
+    color: white;
     font-weight: 600;
     margin: 15px 0 30px;
+
 }
 
 /* play again button */
 .game-modal button {
     padding: 12px 23px;
+    box-shadow:
+        0 0 .4rem #fff,
+        0 0 .4rem #fff,
+        0 0 1rem #FF5C00,
+        0 0 0.8rem #FF5C00,
+        0 0 1.8rem #FF5C00,
+        inset 0 0 1rem #FF5C00;
+
+    /* rest of styling handled using :where() keyword with .keyboard button*/
+}
+
+.game-modal button:hover {
+    padding: 12px 23px;
+    background-color: ;
+
+
     /* rest of styling handled using :where() keyword with .keyboard button*/
 }

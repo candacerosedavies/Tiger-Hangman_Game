@@ -4,8 +4,7 @@
 h1,
 h2,
 p,
-b,
-span {
+b {
     color: #fff;
     text-shadow:
         0 0 10px #FF0286,
@@ -28,9 +27,9 @@ button {
     box-shadow:
         0 0 .4rem #fff,
         0 0 .4rem #fff,
-        0 0 1rem #FF0286,
+        0 0 .5rem #FF0286,
         0 0 0.8rem #FF0286,
-        0 0 1.8rem #FF0286,
+        0 0 1rem #FF0286,
         inset 0 0 1rem #FF0286;
 }
 
@@ -51,6 +50,7 @@ body {
     justify-content: center;
     min-height: 100vh;
     background: black;
+    padding: 2rem;
 
 }
 
@@ -64,7 +64,7 @@ body {
     display: flex;
     gap: 4rem;
     align-items: flex-end;
-    padding: 3rem 2rem;
+    padding: 4rem 2rem;
     border-radius: 10px;
 
     animation: pulsate s infinite alternate;
@@ -73,8 +73,8 @@ body {
     /* padding: 0.4em; */
     box-shadow:
         0 0 1rem #fff,
-        0 0 1rem #fff,
-        0 0 2rem #ff0286,
+        0 0 1.5rem #fff,
+        0 0 4rem #ff0286,
         0 0 0.8rem #ff0286,
         0 0 2.8rem #ff0286,
         inset 0 0 1.3rem #ff0286;
@@ -125,15 +125,16 @@ body {
         flex-direction: column;
         padding: 30px 15px;
         align-items: center;
+
     }
 
     .hangman-box img {
         max-width: 200px;
     }
 
-    .hangman-box h1 {
+    /* .hangman-box h1 {
         display: none;
-    }
+    } */
 }
 
 /* guess word container  */
@@ -185,7 +186,10 @@ body {
 /* hint para which is inside a <b> bold tag */
 .hint-box p b {
     font-weight: 600;
+
 }
+
+
 
 /* num guesses 0/6 also within a <b> tag */
 .game-box .guesses-text b {
@@ -197,10 +201,12 @@ body {
     display: flex;
     gap: 5px;
     margin-top: 40px;
-
+    max-width: 100%;
+    align-self: center;
+    justify-content: center;
     /* without this the whole game box content is not contained within the white/ container background */
     flex-wrap: wrap;
-    justify-content: center;
+
 }
 
 .guessed-letters {

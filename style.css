@@ -1,0 +1,252 @@
+@import url('https://fonts.googleapis.com/css2?family=Jersey+15&family=Pixelify+Sans:wght@400..700&family=Sixtyfour+Convergence:SCAN@-53..100&family=Victor+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Victor Mono", monospace;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    justify-content: center;
+    min-height: 100vh;
+    background: #ff0286;
+}
+
+/* Gameboard + playbox styles */
+
+.container {
+    width: 850px;
+    background: #fff;
+    display: flex;
+    gap: 4rem;
+    align-items: flex-end;
+    padding: 3rem 2rem;
+    border-radius: 10px;
+}
+
+.hangman-box img {
+    max-width: 270px;
+}
+
+.hangman-box h1 {
+    font-size: 1.45rem;
+    margin-top: 20px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+/* mobile/responsive Gameboard + Playbox container styles  styles 
+    only need to ammend these styles to make the whole game responsive. */
+
+@media (max-width: 782px) {
+    .container {
+        flex-direction: column;
+        padding: 30px 15px;
+        align-items: center;
+    }
+
+    .hangman-box img {
+        max-width: 200px;
+    }
+
+    .hangman-box h1 {
+        display: none;
+    }
+}
+
+/* guess word container  */
+.word-display {
+    display: flex;
+    /* without gap it's just a continuous line */
+    gap: 10px;
+    list-style: none;
+    align-items: center;
+    justify-content: center;
+}
+
+/* guess word container and ul styled to be dashed lines.
+    nest structure: game-box/word-display */
+.word-display .letter {
+    width: 28px;
+    margin-bottom: 40px;
+    border-bottom: 3px solid #000;
+
+    /* center, uppercase and style guessed letters */
+    font-size: 2rem;
+    font: 600;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+/* style guess word spaces */
+.letter .space {
+    border-bottom: none;
+    margin: 0 4px;
+}
+
+.word-display .guessed {
+    /* removes the underline when a letter guessed correctly (currently testing in html) */
+    border-color: transparent;
+
+    /* makes the letter sit on top of an invisible bottom border */
+    margin: -40px 0 35px;
+}
+
+/* style the 'hint' text */
+.hint-box p {
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+/* hint para which is inside a <b> bold tag */
+.hint-box p b {
+    font-weight: 600;
+}
+
+/* num guesses 0/6 also within a <b> tag */
+.game-box .guesses-text b {
+    color: #ff5c00;
+}
+
+/* game-box keyboard to input guesses */
+.game-box .keyboard {
+    display: flex;
+    gap: 5px;
+    margin-top: 40px;
+
+    /* without this the whole game box content is not contained within the white/ container background */
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.guessed-letters {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    gap: 10px;
+
+}
+
+.guessed-letters b {
+    display: flex;
+    text-transform: uppercase;
+    flex-wrap: wrap;
+
+}
+
+/* style individual keyboard buttons AND 
+    the 'play again' button nested inside game-modal!*/
+:where(.game-modal, .keyboard) button {
+    color: #f8f8f8;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    background: rgb(219, 123, 196);
+    border-radius: 4px;
+    text-transform: uppercase;
+
+    border: none;
+    outline: none;
+}
+
+/*styles specific to keyboard buttons */
+.keyboard button {
+    padding: 7px;
+    width: calc(100% / 9 - 5px);
+}
+
+.keyboard button[disabled] {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* style individual keyboard buttons AND 
+    the 'play again' button nested inside game-modal!*/
+:where(.game-modal, .keyboard) button:hover {
+    /* paler version of same color */
+    background: rgb(209, 162, 198);
+}
+
+/* ---win/lose gif and message container ----*/
+/* This styling dims the entire screen  */
+.game-modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+
+    display: flex;
+    pointer-events: none;
+    opacity: 0;
+    z-index: 999;
+    transition: opacity 0.4s;
+}
+
+.game-modal.show {
+    pointer-events: auto;
+    opacity: 1;
+
+}
+
+/* This styles a white box that the gif, h4 etc sit inside
+    nesting: game-modal/content */
+.game-modal .content {
+    background: white;
+    max-width: 420px;
+    width: 100%;
+    text-align: center;
+    border-radius: 10px;
+    padding: 1rem 2rem;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+
+}
+
+/* .game-modal img {
+    max-width: 130px;
+    margin-bottom: 20px;
+} */
+
+.tiger-animation {
+    /* max-width: 150px; */
+
+
+}
+
+/* 'game over' text */
+.game-modal h2 {
+    font-size: 1.53rem;
+}
+
+/* 'the correct word was:'' text */
+.game-modal p {
+    font-size: 1.15rem;
+    margin: 15px 0 30px;
+    font-weight: 500;
+}
+
+/* style the answer to the correct word (will be dynamic) */
+.game-modal p b {
+    color: rgb(219, 123, 196);
+    font-weight: 600;
+    margin: 15px 0 30px;
+}
+
+/* play again button */
+.game-modal button {
+    padding: 12px 23px;
+    /* rest of styling handled using :where() keyword with .keyboard button*/
+}

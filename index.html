@@ -1,0 +1,80 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tiger Hangman v2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Victor+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+    <!-- 'defer' keyword to ensure page loaded to the DOM before JS -->
+    <script src="scripts/hangman-svg.js" defer></script>
+    <script src="scripts/word-list.js" defer></script>
+    <script src="scripts/script.js" defer></script>
+    <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+</head>
+
+
+
+
+<body>
+    <!--tiger animation and win/lose message -->
+    <dialog class="game-modal">
+        <article class="content">
+            <dotlottie-player class="tiger-animation" alt="roaring-geometric-colorful-tiger"
+                src="https://lottie.host/5de71444-5f88-4614-b67f-e428ffcca953/bTHZNrMBkU.lottie"
+                background="transparent" speed="1" style="width: 300px; height: 300px" loop autoplay></dotlottie-player>
+            <!-- <img src="images/lost.gif" alt="crying-face-gif" /> -->
+            <h2>Game Over!</h2>
+            <p>The correct word was: </p>
+            <button class="play-again">Play Again</button>
+
+
+        </article>
+    </dialog>
+    <!-- class=container is the gameboard + playbox -->
+    <main class="container">
+        <!-- gameboard component -->
+        <figure class="hangman-box">
+            <!-- <img src="images/hangman-0.svg" alt="hangman-img" /> -->
+            <svg id="hangman-svg" width="120" height="120" viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg"
+                alt="hangman-svg">
+                <!-- SVG generated in script.js using hangman-svgs.js -->
+            </svg>
+            <h1>Tiger Hangman</h1>
+        </figure>
+
+        <!-- player box/ game-box component -->
+        <section class="game-box">
+            <ul class="word-display">
+                <!-- list items generated in script.js -->
+            </ul>
+
+            <section class="hint-box">
+                <p class="hint-text">
+                    Hint:
+                    <b>Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit.</b>
+                </p>
+
+                <span class="guesses-text">
+                    Incorrect Guesses:
+                    <b>0 / 6</b>
+                </span>
+
+                <span class="guessed-letters">Guessed Letters:
+                    <b></b>
+                </span>
+
+            </section>
+
+            <section>
+                <nav class="keyboard"></nav>
+            </section>
+        </section>
+    </main>
+</body>
+
+</html>
